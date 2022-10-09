@@ -16,9 +16,4 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("http://schemas.hpod9.com/haley/wpf", "hlyWPF")]
 
 //FOR XAML NAMESPACES - WPF
-[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.WPF.Controls")]
-[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.WPF")]
 [assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Enums")]
-[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Events")]
-[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Models")]
-[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Utils")]
