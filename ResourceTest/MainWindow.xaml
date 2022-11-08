@@ -9,7 +9,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <WrapPanel>
-            <Image hw:SvgColor.Color="Pink" Source="{StaticResource collapse_medium}"  Height="50" Width="50"/>
+            <Image hw:SvgColor.Color="Pink" Source="{StaticResource collapse}"  Height="50" Width="50"/>
             <Image Height="50" Width="50">
                 <Image.Source>
                     <DrawingImage>
@@ -24,14 +24,14 @@
             <Viewbox Height="50" Width="50">
                 <Path Data="{StaticResource brand_google_plus_gGeometry}" Fill="Red" />
             </Viewbox>
-            <Image Height="50" Width="50" Source="{StaticResource brand_google_plus_g}"/>
+            <Image Height="50" Width="50" Source="{hw:Img Preference=SvgKind, SvgKind=brand_avianex,IconKind=car_2}"/>
             <Image Height="50" Width="50">
                 <Image.Source>
-                    <DrawingImage Drawing="{StaticResource brand_ioxhostDrawingGroup}" hw:SvgColor.Color="Purple"/>
+                    <DrawingImage Drawing="{StaticResource brand_mdbDrawingGroup}"/>
                 </Image.Source>
             </Image>
-            <hw:SvgImage Height="100" Width="300" Fill="Orange" />
-            <hw:SvgImage Height="50" Width="50" Fill="Red" />
+            <hw:Image Source="{hw:Img SvgKind=brand_autoprefixer,Preference=IconKind,IconKind=firstaid}" Height="100" Width="300" Fill="DarkBlue" />
+            <hw:Image Source="{hw:Img SvgKind=brand_youtube}" Height="150" Width="150" Fill="Red" Background="Gainsboro" BorderBrush="Purple" BorderThickness="3"/>
         </WrapPanel>
     </Grid>
 </Window>

@@ -4,6 +4,6 @@
     xmlns:ml="clr-namespace:Haley.Models"
     xmlns:local="clr-namespace:Haley.WPF">
     <ResourceDictionary.MergedDictionaries>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/ThemeMain/SvgImageRD.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/ThemeMain/ImageRD.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
