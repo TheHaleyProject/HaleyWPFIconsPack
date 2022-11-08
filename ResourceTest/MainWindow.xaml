@@ -8,6 +8,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image Source="{StaticResource cart_medium}" Height="50" Width="50"/>
+        <WrapPanel>
+            <Image hw:SvgColor.Color="Pink" Source="{StaticResource collapse_medium}"  Height="50" Width="50"/>
+            <Image Height="50" Width="50">
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <DrawingGroup ClipGeometry="M0,0 V512 H640 V0 H0 Z">
+                                <GeometryDrawing Brush="Purple" Geometry="{StaticResource brand_google_plus_gGeometry}" />
+                            </DrawingGroup>
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
+            <Viewbox Height="50" Width="50">
+                <Path Data="{StaticResource brand_google_plus_gGeometry}" Fill="Red" />
+            </Viewbox>
+            <Image Height="50" Width="50" Source="{StaticResource brand_google_plus_g}"/>
+            <Image Height="50" Width="50">
+                <Image.Source>
+                    <DrawingImage Drawing="{StaticResource brand_ioxhostDrawingGroup}" hw:SvgColor.Color="Purple"/>
+                </Image.Source>
+            </Image>
+            <hw:SvgImage Height="100" Width="300" Fill="Orange" />
+            <hw:SvgImage Height="50" Width="50" Fill="Red" />
+        </WrapPanel>
     </Grid>
 </Window>

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:ml="clr-namespace:Haley.Models"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/haleyIconsCommon.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/haleySvgBranded.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Themes/Generic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

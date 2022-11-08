@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Haley.Enums;
+using Haley.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,14 @@ namespace ResourceTest {
     /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
+            initiate();
             InitializeComponent();
+
+        }
+
+        private void initiate() {
+            TextBox tbox = new TextBox();
+            SvgColor.SetColor(tbox, Brushes.Purple);
         }
     }
 }
