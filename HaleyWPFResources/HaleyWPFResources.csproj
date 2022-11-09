@@ -327,15 +327,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Dictionaries\haleyIconsCommon.xaml">
+    <Page Update="Dictionaries\haleySvgPack.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\Icons\haleyIconsCommon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\ThemeMain\SvgImageRD.xaml">
+    <Page Update="Dictionaries\haleyIconsPack.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ImageRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 
   <Import Project="..\..\HaleyXamlShared\XamlShared\XamlShared.projitems" Label="Shared" />
+
+  <Import Project="..\..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems" Label="Shared" />
 </Project>
