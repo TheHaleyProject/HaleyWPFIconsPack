@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>Haley.WPF.IconsPack</AssemblyName>
+		<RootNamespace>Haley.WPF</RootNamespace>
+		<Version>1.0.1</Version>
+		<Authors>The Haley Project</Authors>
+		<Product>Resources for Haley WPF Project</Product>
+		<Company>TheHaleyProject</Company>
+		<Description>Contains images and other resources for Haley.WPF.</Description>
+		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
+		<RepositoryUrl>https://github.com/TheHaleyProject/HaleyWPF</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Copyright>Haley @ 2020</Copyright>
+		<PackageReleaseNotes>Adde</PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<PackageIcon>Haley.png</PackageIcon>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseWPF>true</UseWPF>
+    <Title>HaleyWPFResources</Title>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE,HWPFR</DefineConstants>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Properties\history.png" />
+    <None Remove="Properties\history_medium.png" />
+    <None Remove="Properties\paintbrush.png" />
+    <None Remove="Properties\paintbrush_2.png" />
+    <None Remove="Properties\paintbrush_2_medium.png" />
+    <None Remove="Properties\paintbrush_medium.png" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="..\Haley.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Dictionaries\internalIconsPack.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ImageRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <Import Project="..\..\HaleyXamlShared\XamlShared\XamlShared.projitems" Label="Shared" />
+
+  <Import Project="..\..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems" Label="Shared" />
+</Project>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaleyWPFIconsPack", "HaleyWPFIconsPack\HaleyWPFIconsPack.csproj", "{1210C59D-CD1D-4D0E-8746-30E69DB5C095}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceTest", "ResourceTest\ResourceTest.csproj", "{601FCA95-027D-4990-82BB-7A50E58F863E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlShared", "..\HaleyXamlShared\XamlShared\XamlShared.shproj", "{645462F3-ACB2-460B-A3B1-CFEA0FC93527}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1210C59D-CD1D-4D0E-8746-30E69DB5C095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1210C59D-CD1D-4D0E-8746-30E69DB5C095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1210C59D-CD1D-4D0E-8746-30E69DB5C095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1210C59D-CD1D-4D0E-8746-30E69DB5C095}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601FCA95-027D-4990-82BB-7A50E58F863E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601FCA95-027D-4990-82BB-7A50E58F863E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601FCA95-027D-4990-82BB-7A50E58F863E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601FCA95-027D-4990-82BB-7A50E58F863E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D992CC4-7837-4664-A260-F38CD8C93746}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\HaleyXamlShared\XamlShared\XamlShared.projitems*{1210c59d-cd1d-4d0e-8746-30e69db5c095}*SharedItemsImports = 5
+		..\HaleyXamlShared\XamlShared\XamlShared.projitems*{645462f3-acb2-460b-a3b1-cfea0fc93527}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal
