@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceTest", "ResourceTes
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlShared", "..\HaleyXamlShared\XamlShared\XamlShared.shproj", "{645462F3-ACB2-460B-A3B1-CFEA0FC93527}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlUtilsShared", "..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.shproj", "{9677EDBD-EA53-47EF-B8CB-8546516624A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\HaleyXamlShared\XamlShared\XamlShared.projitems*{1210c59d-cd1d-4d0e-8746-30e69db5c095}*SharedItemsImports = 5
+		..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems*{1210c59d-cd1d-4d0e-8746-30e69db5c095}*SharedItemsImports = 5
 		..\HaleyXamlShared\XamlShared\XamlShared.projitems*{645462f3-acb2-460b-a3b1-cfea0fc93527}*SharedItemsImports = 13
+		..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems*{9677edbd-ea53-47ef-b8cb-8546516624a8}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

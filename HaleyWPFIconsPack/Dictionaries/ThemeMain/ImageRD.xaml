@@ -1,7 +1,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ml="clr-namespace:Haley.Models"
+    xmlns:ml="clr-namespace:Shared.Haley.WpfIconPack"
     xmlns:bc="clr-namespace:Haley.WPF.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.IconsPack;component/Dictionaries/internalIconsPack.xaml"/>

@@ -21,14 +21,8 @@ namespace ResourceTest {
     /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
-            initiate();
             InitializeComponent();
 
-        }
-
-        private void initiate() {
-            TextBox tbox = new TextBox();
-            SvgColor.SetColor(tbox, Brushes.Purple);
         }
     }
 }

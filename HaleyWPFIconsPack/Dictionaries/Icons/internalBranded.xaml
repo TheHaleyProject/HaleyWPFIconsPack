@@ -4,14 +4,14 @@
     <Geometry x:Key="brand_haley_circleGeometry">F1 M42.52,42.52z M0,0z M21.26,0C9.52,0 0,9.52 0,21.26 0,33 9.52,42.52 21.26,42.52 33,42.52 42.52,33 42.52,21.26 42.52,9.52 33,0 21.26,0z M29.6,34.14L24.84,34.14 24.84,24.15C24.84,23.39 24.59,23.02 24.08,23.02 23.57,23.02 23.07,23.5 22.62,24.47 22.17,25.44 21.94,26.48 21.94,27.59L21.94,34.14 17.18,34.14 17.18,16.33C18.59,16.33,20.18,16.24,21.94,16.06L21.94,23.25C22.97,21.52 24.41,20.65 26.28,20.65 28.49,20.65 29.59,21.64 29.59,23.62L29.59,34.13z M33.29,34.39C31.76,34.39 30.99,33.62 30.99,32.09 30.99,30.56 31.76,29.79 33.29,29.79 34.82,29.79 35.59,30.56 35.59,32.09 35.59,33.62 34.82,34.39 33.29,34.39z</Geometry>
     <DrawingGroup x:Key="brand_haley_circleDrawingGroup" ClipGeometry="M0,0 V42.52 H42.52 V0 H0 Z">
         <DrawingGroup Opacity="1">
-            <GeometryDrawing Brush="#FF231F20" Geometry="{StaticResource brand_haley_circleGeometry}" />
+            <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource brand_haley_circleGeometry}" />
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="brand_haley_circle" Drawing="{StaticResource brand_haley_circleDrawingGroup}" />
     <Geometry x:Key="brand_haley_squareGeometry">F1 M42.52,42.52z M0,0z M0,0L0,42.52 42.52,42.52 42.52,0 0,0z M32.53,41.32L25.4,41.32 25.4,26.36C25.4,25.23 25.02,24.66 24.27,24.66 23.52,24.66 22.76,25.39 22.08,26.84 21.4,28.29 21.06,29.85 21.06,31.52L21.06,41.32 13.93,41.32 13.93,14.66C16.04,14.66,18.41,14.52,21.06,14.25L21.06,25.01C22.6,22.42 24.76,21.12 27.56,21.12 30.87,21.12 32.52,22.6 32.52,25.57L32.52,41.31z M38.05,41.69C35.76,41.69 34.61,40.54 34.61,38.25 34.61,35.96 35.76,34.81 38.05,34.81 40.34,34.81 41.49,35.96 41.49,38.25 41.49,40.54 40.34,41.69 38.05,41.69z</Geometry>
     <DrawingGroup x:Key="brand_haley_squareDrawingGroup" ClipGeometry="M0,0 V42.52 H42.52 V0 H0 Z">
         <DrawingGroup Opacity="1">
-            <GeometryDrawing Brush="#FF231F20" Geometry="{StaticResource brand_haley_squareGeometry}" />
+            <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource brand_haley_squareGeometry}" />
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="brand_haley_square" Drawing="{StaticResource brand_haley_squareDrawingGroup}" />

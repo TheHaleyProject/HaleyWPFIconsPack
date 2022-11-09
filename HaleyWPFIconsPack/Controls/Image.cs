@@ -34,7 +34,7 @@ namespace Haley.WPF.Controls {
             DependencyProperty.Register(nameof(RotateAngle), typeof(double), typeof(Image), new PropertyMetadata(0.0));
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register(nameof(Source), typeof(ImageSource), typeof(Image), new FrameworkPropertyMetadata(ResourceHelper.GetIcon(IconKind.empty_image.ToString(), IconTargetType.Image), propertyChangedCallback: (d, e) => ProcessChange(d, true)));
+            DependencyProperty.Register(nameof(Source), typeof(ImageSource), typeof(Image), new FrameworkPropertyMetadata(ResourceHelper.GetDefaultIcon(), propertyChangedCallback: (d, e) => ProcessChange(d, true)));
 
         internal static readonly DependencyProperty HoverEnabledProperty =
             DependencyProperty.Register(nameof(HoverEnabled), typeof(bool), typeof(Image), new FrameworkPropertyMetadata(false));
@@ -113,7 +113,7 @@ namespace Haley.WPF.Controls {
                 _change_in_progress = true;
 
                 if (Source is DrawingImage dimg) {
-                    var converted_source = ImageUtilsInternal.ChangeImageColor(dimg, is_hover ? HoverFill : Fill ?? _defaultBrush);
+                    var converted_source = ImageUtilsInternal.ChangeDrawingColor(dimg, is_hover ? HoverFill : Fill ?? _defaultBrush);
                     if (!is_hover) {
                         SetCurrentValue(SourceProperty, converted_source);
                     } else {

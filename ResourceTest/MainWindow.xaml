@@ -9,29 +9,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <WrapPanel>
-            <Image hw:SvgColor.Color="Pink" Source="{StaticResource collapse}"  Height="50" Width="50"/>
-            <Image Height="50" Width="50">
-                <Image.Source>
-                    <DrawingImage>
-                        <DrawingImage.Drawing>
-                            <DrawingGroup ClipGeometry="M0,0 V512 H640 V0 H0 Z">
-                                <GeometryDrawing Brush="Purple" Geometry="{StaticResource brand_google_plus_gGeometry}" />
-                            </DrawingGroup>
-                        </DrawingImage.Drawing>
-                    </DrawingImage>
-                </Image.Source>
-            </Image>
-            <Viewbox Height="50" Width="50">
-                <Path Data="{StaticResource brand_google_plus_gGeometry}" Fill="Red" />
-            </Viewbox>
-            <Image Height="50" Width="50" Source="{hw:Img Preference=SvgKind, SvgKind=brand_avianex,IconKind=car_2}"/>
-            <Image Height="50" Width="50">
-                <Image.Source>
-                    <DrawingImage Drawing="{StaticResource brand_mdbDrawingGroup}"/>
-                </Image.Source>
-            </Image>
-            <hw:Image Source="{hw:Img SvgKind=brand_autoprefixer,Preference=IconKind,IconKind=firstaid}" Height="100" Width="300" Fill="DarkBlue" />
-            <hw:Image Source="{hw:Img SvgKind=brand_youtube}" Height="150" Width="150" Fill="Red" Background="Gainsboro" BorderBrush="Purple" BorderThickness="3"/>
+            <Image Source="{hw:Img BStrap=bs_3_square_fill}"  Height="50" Width="50"/>
+            <hw:Image Source="{hw:Img Brand=brand_coursera}" Height="400" Width="300" Fill="Wheat" RotateAngle="90" HoverFill="Green"/>
+            <hw:Image Source="{hw:Img Brand=brand_haley_square}" Height="150" Width="150" Fill="LightSalmon"  BorderThickness="3" RotateAngle="180">
+                <hw:Image.HoverFill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF03CA6A"/>
+                        <GradientStop Color="#FFCE1D1D" Offset="1"/>
+                    </LinearGradientBrush>
+                </hw:Image.HoverFill>
+            </hw:Image>
+
+
         </WrapPanel>
     </Grid>
 </Window>

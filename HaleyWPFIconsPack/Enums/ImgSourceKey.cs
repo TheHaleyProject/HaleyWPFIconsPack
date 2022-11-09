@@ -2,9 +2,10 @@
 
 namespace Haley.Enums
 {
-    public enum ImgSource {
+    public enum ImgSourceKey {
         BrandKind,
-        FAKind,
+        FAKind_Light,
+        FAKind_Solid,
         BootStrapKind
     }
 }

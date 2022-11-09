@@ -5,11 +5,11 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF.IconsPack</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<Authors>The Haley Project</Authors>
-		<Product>Resources for Haley WPF Project</Product>
+		<Product>WPF Icons Pack</Product>
 		<Company>TheHaleyProject</Company>
-		<Description>Contains images and other resources for Haley.WPF.</Description>
+		<Description>WPF Icons pack to be used with any WPF Project</Description>
 		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
 		<RepositoryUrl>https://github.com/TheHaleyProject/HaleyWPF</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -29,7 +29,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
-    <Title>HaleyWPFResources</Title>
+    <Title>HaleyWPFIconsPack</Title>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
@@ -81,10 +81,6 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utils\" />
   </ItemGroup>
 
   <Import Project="..\..\HaleyXamlShared\XamlShared\XamlShared.projitems" Label="Shared" />
