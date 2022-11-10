@@ -71,6 +71,10 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <Page Update="Dictionaries\internalIconsPack.xaml">

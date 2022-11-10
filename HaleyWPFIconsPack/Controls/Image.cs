@@ -17,6 +17,7 @@ using System.Windows.Media.Converters;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Isolated.Haley.WpfIconPack;
 
 namespace Haley.WPF.Controls {
     public class Image : Control {
@@ -34,7 +35,7 @@ namespace Haley.WPF.Controls {
             DependencyProperty.Register(nameof(RotateAngle), typeof(double), typeof(Image), new PropertyMetadata(0.0));
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register(nameof(Source), typeof(ImageSource), typeof(Image), new FrameworkPropertyMetadata(ResourceHelper.GetDefaultIcon(), propertyChangedCallback: (d, e) => ProcessChange(d, true)));
+            DependencyProperty.Register(nameof(Source), typeof(ImageSource), typeof(Image), new FrameworkPropertyMetadata(IconFinder.GetDefaultIcon(), propertyChangedCallback: (d, e) => ProcessChange(d, true)));
 
         internal static readonly DependencyProperty HoverEnabledProperty =
             DependencyProperty.Register(nameof(HoverEnabled), typeof(bool), typeof(Image), new FrameworkPropertyMetadata(false));
