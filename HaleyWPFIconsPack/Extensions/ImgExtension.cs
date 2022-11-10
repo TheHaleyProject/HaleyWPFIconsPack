@@ -194,7 +194,15 @@ namespace Haley.Utils
         private void ObjectPropertyChanged(object sender, PropertyChangedEventArgs e) {
             //now check and compare the property.
             if (e.PropertyName != BindingPropertyName) return; //ignore don't try to change the image.
-            //Get proeprty from sender
+                                                               //Get proeprty from sender
+            object propValue = null;
+            try {
+                propValue = sender.GetType()?.GetProperty(BindingPropertyName)?.GetValue(sender);
+               
+            } catch (Exception) {
+
+            }
+            _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
 
         bool GetTargetElement(IServiceProvider serviceProvider,out DependencyElement target) {
