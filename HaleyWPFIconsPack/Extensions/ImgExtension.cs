@@ -17,6 +17,7 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using Isolated.Haley.WpfIconPack;
 using Haley.WPF.Models;
+using System.ComponentModel;
 
 namespace Haley.Utils
 {
@@ -177,12 +178,23 @@ namespace Haley.Utils
                 //Since we are dealing with DataContextChange, we will always get DataContext Property
                 if (e.NewValue != null && !(e.NewValue is Enum)) {
                     //If newvalue is an object.
-                    PropertyInfo tarProp = e.NewValue.GetType().GetProperty(BindingPropertyName);
+                    Type targetType = e.NewValue.GetType();
+                    PropertyInfo tarProp = targetType.GetProperty(BindingPropertyName);
                     propValue = tarProp?.GetValue(e.NewValue);
+                     if (targetType.IsAssignableFrom(typeof(INotifyPropertyChanged))){
+                        //Subscribe to this property change also
+                        (e.NewValue as INotifyPropertyChanged).PropertyChanged += ObjectPropertyChanged;
+                        }
                     } 
                 } catch (Exception) {
             }
-            _sourceProvider.OnDataChanged(e.NewValue); //this will be the new data.
+            _sourceProvider.OnDataChanged(propValue); //this will be the new data.
+        }
+
+        private void ObjectPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            //now check and compare the property.
+            if (e.PropertyName != BindingPropertyName) return; //ignore don't try to change the image.
+            //Get proeprty from sender
         }
 
         bool GetTargetElement(IServiceProvider serviceProvider,out DependencyElement target) {
@@ -209,7 +221,6 @@ namespace Haley.Utils
             if (_target != null) {
                 _target.TargetObject.DataContextChanged -= TargetDataChanged;
             }
-
         }
     }
 }
