@@ -181,7 +181,7 @@ namespace Haley.Utils
                     Type targetType = e.NewValue.GetType();
                     PropertyInfo tarProp = targetType.GetProperty(BindingPropertyName);
                     propValue = tarProp?.GetValue(e.NewValue);
-                     if (targetType.IsAssignableFrom(typeof(INotifyPropertyChanged))){
+                     if (typeof(INotifyPropertyChanged).IsAssignableFrom(targetType)) {
                         //Subscribe to this property change also
                         (e.NewValue as INotifyPropertyChanged).PropertyChanged += ObjectPropertyChanged;
                         }
