@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Haley.Enums;
-using Isolated.Haley.WpfIconPack;
+using Haley.Utils;
 
 namespace Haley.WPF.Models {
     internal class IconSourceProvider : ObservableObject {
@@ -22,8 +22,33 @@ namespace Haley.WPF.Models {
             }
         }
 
-        public void OnDataChanged(object data) {
-            //We expect the data to be in the format of Enum
+        public void OnDataChanged(object input) {
+            //We expect the data to be in the format of Enum or string.
+            object data = input; //incoming string
+
+            if (data is string dstr) {
+                //Try to change the string to enum
+                do {
+                    //Check brand kind
+                    if (Enum.TryParse<BrandKind>(dstr, true, out var _bkind)) {
+                        data = _bkind;
+                        break;
+                    }
+
+                    //Check bootstrap
+                    if (Enum.TryParse<BootStrapKind>(dstr, true, out var _bskind)) {
+                        data = _bskind;
+                        break;
+                    }
+
+                    //Check FontAwesome
+
+                    if (Enum.TryParse<FAKind>(dstr, true, out var _fakind)) {
+                        data = _fakind;
+                        break;
+                    }
+                } while (false);
+            }
 
             if (!(data is Enum @enum)) {
                 SetDefault();

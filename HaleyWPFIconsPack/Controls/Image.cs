@@ -114,7 +114,7 @@ namespace Haley.WPF.Controls {
                 _change_in_progress = true;
 
                 if (Source is DrawingImage dimg) {
-                    var converted_source = ImageUtilsInternal.ChangeDrawingColor(dimg, is_hover ? HoverFill : Fill ?? _defaultBrush);
+                    var converted_source = InternalUtilsColor.ChangeDrawingColor(dimg, is_hover ? HoverFill : Fill ?? _defaultBrush);
                     if (!is_hover) {
                         SetCurrentValue(SourceProperty, converted_source);
                     } else {
@@ -122,7 +122,7 @@ namespace Haley.WPF.Controls {
                     }
                 } else if (Source is BitmapSource bsource) {
                     //If source is not a drawing image, then we can consider directly changing the color using Color Utils (covered in PlainImage)
-                    var img_source = ImageUtilsInternal.ChangeImageColor(bsource, is_hover ? HoverFill : Fill ?? _defaultBrush);
+                    var img_source = InternalUtilsColor.ChangeImageColor(bsource, is_hover ? HoverFill : Fill ?? _defaultBrush);
                     if (!is_hover) {
                         SetCurrentValue(SourceProperty, img_source);
                     } else {

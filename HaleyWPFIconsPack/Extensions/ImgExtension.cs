@@ -18,6 +18,7 @@ using System.Windows.Markup;
 using Isolated.Haley.WpfIconPack;
 using Haley.WPF.Models;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace Haley.Utils
 {
@@ -27,7 +28,7 @@ namespace Haley.Utils
     
     public class ImgExtension : MarkupExtension {
         private string _bindingPropName;
-        private DependencyElement _target;
+        //private DependencyElement _target;
         private IconSourceProvider _sourceProvider = new IconSourceProvider();
 
         //If we set the value of BindingPropertyName here, then during debug runtime, we will not be able to change to new property
@@ -39,7 +40,6 @@ namespace Haley.Utils
         public ImgExtension() {
             //IMPORTANT: AT ANY COST, DONOT SET ANY DEFAULT VALUES. DEFAULT VALUES CAN BE SET AS FALL BACK ONLY (Via SetDefault() Method)
         }
-
 
         #region Properties
         //[ConstructorArgument("@enum")] //If we setup constructor argument, empty values will throw exception
@@ -56,7 +56,6 @@ namespace Haley.Utils
         }
 
         #endregion
-
 
         public ImgPreference? Preference { get; set; }
 
@@ -148,19 +147,15 @@ namespace Haley.Utils
             //DATAFLOW (EXT TO DO) 
             //Since EXT is binding to the DataContext changes of the DO, whenever the value is changing, we invoke the internal Binding to provide value.
 
-            //Always remove the old target subscriptions
-            if (_target != null) {
-                _target.TargetObject.DataContextChanged -= TargetDataChanged;
-            }
 
             //PROVIDE VALUE WILL BE CALLED WHENEVER ANY PROPERTY ON THIS WILL BE CHANGED.
             if (!string.IsNullOrWhiteSpace(BindingSource)) {
                 //Binding takes top most priority
                 //If binding is not null, we try to fetch the datacontext of the target element and then bind to the changes.
-                if (HelperUtilsInternal.GetTargetElement(serviceProvider, out var target)) {
+                if (InternalUtilsCommon.GetTargetElement(serviceProvider, out var target)) {
                     //create binding and then return the binding expression, rather than directly returning the value.
-                    _target = target;
-                    _target.TargetObject.DataContextChanged += TargetDataChanged; //To receive the property changes during runtime
+                    target.TargetObject.DataContextChanged -= TargetDataChanged; 
+                    target.TargetObject.DataContextChanged += TargetDataChanged; //To receive the property changes during runtime
                     var binding = CreateBinding();
                     return binding.ProvideValue(serviceProvider); //This will provide the value of IconSource Property
                     //If we directly add a binding to the property name, then whenever the value of that property changes, we will 
@@ -177,19 +172,10 @@ namespace Haley.Utils
                 //To receive message whenever the property value is changed.
                 //Since we are dealing with DataContextChange, we will always get DataContext Property
                 //If Binding Source is "." then we directly bind the property. So, don't process or validate.
-                if (e.NewValue != null && !(e.NewValue is Enum) && BindingSource != ".") {
-
-                    //If newvalue is an object.
-                    Type targetType = e.NewValue.GetType();
-                    PropertyInfo tarProp = targetType.GetProperty(BindingSource);
-                    propValue = tarProp?.GetValue(e.NewValue);
-                     if (typeof(INotifyPropertyChanged).IsAssignableFrom(targetType)) {
-                        //Subscribe to this property change also
-                        (e.NewValue as INotifyPropertyChanged).PropertyChanged += ObjectPropertyChanged;
-                        }
-                    } 
-                } catch (Exception) {
-            }
+                if (e.NewValue != null && !(e.NewValue is string || e.NewValue is Enum) && BindingSource != ".") {
+                    propValue = InternalUtilsCommon.FetchValueAndMonitor(e.NewValue, BindingSource, ObjectPropertyChanged);
+                }
+            } catch (Exception) { }
             _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
 
@@ -206,9 +192,7 @@ namespace Haley.Utils
             }
             _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
-
         
-
         Binding CreateBinding() {
 
             //This binding itself is to return value from EXT to DO
@@ -216,12 +200,6 @@ namespace Haley.Utils
                 Source = _sourceProvider
             };
             return binding;
-        }
-
-        ~ImgExtension() {
-            if (_target != null) {
-                _target.TargetObject.DataContextChanged -= TargetDataChanged;
-            }
         }
     }
 }

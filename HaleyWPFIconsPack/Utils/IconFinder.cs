@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Haley.Enums;
 using System.Windows.Media;
 using Haley.Utils;
+using Isolated.Haley.WpfIconPack;
 
-namespace Isolated.Haley.WpfIconPack {
+namespace Haley.Utils {
     public static class IconFinder {
         static bool _initialized = false;
         const string PACK_PATH = "pack://application:,,,/Haley.WPF.IconsPack;component/Dictionaries/Icons/";
