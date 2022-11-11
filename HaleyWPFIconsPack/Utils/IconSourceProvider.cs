@@ -7,10 +7,11 @@ using System.Windows;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Haley.Enums;
-using Haley.Utils;
+using Haley.Models;
+using Abstractions.IconsPack.Haley;
 
-namespace Haley.WPF.Models {
-    internal class IconSourceProvider : ObservableObject {
+namespace Haley.Utils {
+    internal class IconSourceProvider : ObservableObject, IIconSourceProvider {
 
         Enum resource_key;
         ImgSourceKey source_key;

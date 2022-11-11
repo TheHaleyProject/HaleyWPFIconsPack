@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Haley.Enums;
 using System.Windows.Media;
 using Haley.Utils;
-using Isolated.Haley.WpfIconPack;
+using Models.IconsPack.Haley;
 
 namespace Haley.Utils {
     public static class IconFinder {

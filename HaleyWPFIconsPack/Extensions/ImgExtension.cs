@@ -15,21 +15,21 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using System.Windows.Markup;
-using Isolated.Haley.WpfIconPack;
-using Haley.WPF.Models;
+using Models.IconsPack.Haley;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using Abstractions.IconsPack.Haley;
 
 namespace Haley.Utils
 {
-    //Binding to markup extension requires should be two way. Whenever the value changes, we need to return it back and whenever the propertyname (binded) changes, we need to act upon it.
+    //Binding to markup extension should be two way. Whenever the value changes, we need to return it back and whenever the propertyname (binded) changes, we need to act upon it.
     //https://stackoverflow.com/questions/10328802/markupextension-with-binding-parameters Taking an idea from here and mixing it up with our LangExtension (in Haley.MVVM) to make this ImgExtension work with a bindable property
     //We definitely need to keep this simple, so strictly no creation of attached property to deal with this.
     
     public class ImgExtension : MarkupExtension {
         private string _bindingPropName;
         //private DependencyElement _target;
-        private IconSourceProvider _sourceProvider = new IconSourceProvider();
+        private IIconSourceProvider _sourceProvider = new IconSourceProvider();
 
         //If we set the value of BindingPropertyName here, then during debug runtime, we will not be able to change to new property
         public ImgExtension(string binding_name) : this() {
@@ -196,7 +196,7 @@ namespace Haley.Utils
         Binding CreateBinding() {
 
             //This binding itself is to return value from EXT to DO
-            var binding = new Binding(nameof(IconSourceProvider.IconSource)) {
+            var binding = new Binding(nameof(IIconSourceProvider.IconSource)) {
                 Source = _sourceProvider
             };
             return binding;

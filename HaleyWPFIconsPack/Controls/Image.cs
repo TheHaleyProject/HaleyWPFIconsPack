@@ -17,7 +17,7 @@ using System.Windows.Media.Converters;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Isolated.Haley.WpfIconPack;
+using Models.IconsPack.Haley;
 
 namespace Haley.WPF.Controls {
     public class Image : Control {

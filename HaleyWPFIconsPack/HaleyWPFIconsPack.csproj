@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF.IconsPack</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>1.0.4</Version>
+		<Version>1.0.5</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>WPF Icons Pack</Product>
 		<Company>TheHaleyProject</Company>
@@ -16,7 +16,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
 		<PackageReleaseNotes>Adde</PackageReleaseNotes>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 		<PackageIcon>Haley.png</PackageIcon>
@@ -85,6 +85,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <Import Project="..\..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems" Label="Shared" />
