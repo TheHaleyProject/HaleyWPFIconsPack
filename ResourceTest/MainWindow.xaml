@@ -12,8 +12,9 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <WrapPanel DataContext="{Binding NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
-            <Image Source="{hw:Img BindingPropertyName=SourceEnum,Brand=brand_adobe_premiere}"  Height="50" Width="50"/>
+        <WrapPanel>
+            <Image Source="{hw:Img BindingSource=SourceEnum,Brand=brand_adobe_premiere}"  Height="50" Width="50">
+            </Image>
             <hw:Image Source="{hw:Img Brand=brand_coursera}" Height="400" Width="300" Fill="Wheat" RotateAngle="90" HoverFill="Green"/>
             <hw:Image Source="{hw:Img Brand=brand_haley_square}" Height="150" Width="150" Fill="LightSalmon"  BorderThickness="3" RotateAngle="180">
                 <hw:Image.HoverFill>
@@ -23,8 +24,6 @@
                     </LinearGradientBrush>
                 </hw:Image.HoverFill>
             </hw:Image>
-
-
         </WrapPanel>
         <Button Height="30" Width="100" Grid.Row="1" HorizontalAlignment="Right" Margin="5" Content="Change" Command="{Binding CMDChangeRandomImage}"/>
     </Grid>

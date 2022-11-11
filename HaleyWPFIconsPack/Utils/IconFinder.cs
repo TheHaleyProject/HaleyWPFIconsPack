@@ -40,5 +40,9 @@ namespace Isolated.Haley.WpfIconPack {
         public static ImageSource GetDefaultIcon() {
             return GetIcon(BrandKind.brand_haley_circle.ToString(), ImgSourceKey.BrandKind);
         }
+
+        public static List<Uri> GetAllSourcePaths() {
+            return ResourceFetcher.GetAllSourcePaths();
+        }
     }
 }

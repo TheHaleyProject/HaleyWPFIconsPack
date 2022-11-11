@@ -50,7 +50,7 @@ namespace Haley.Utils
         /// If complete datacontext needs to be considered, type "this" else direclty provide the "propertyname"
         /// </summary>
 
-        public string BindingPropertyName {
+        public string BindingSource {
             get { return _bindingPropName; }
             set { _bindingPropName = value; }
         }
@@ -154,10 +154,10 @@ namespace Haley.Utils
             }
 
             //PROVIDE VALUE WILL BE CALLED WHENEVER ANY PROPERTY ON THIS WILL BE CHANGED.
-            if (!string.IsNullOrWhiteSpace(BindingPropertyName)) {
+            if (!string.IsNullOrWhiteSpace(BindingSource)) {
                 //Binding takes top most priority
                 //If binding is not null, we try to fetch the datacontext of the target element and then bind to the changes.
-                if (GetTargetElement(serviceProvider, out var target)) {
+                if (HelperUtilsInternal.GetTargetElement(serviceProvider, out var target)) {
                     //create binding and then return the binding expression, rather than directly returning the value.
                     _target = target;
                     _target.TargetObject.DataContextChanged += TargetDataChanged; //To receive the property changes during runtime
@@ -176,10 +176,12 @@ namespace Haley.Utils
             try {
                 //To receive message whenever the property value is changed.
                 //Since we are dealing with DataContextChange, we will always get DataContext Property
-                if (e.NewValue != null && !(e.NewValue is Enum)) {
+                //If Binding Source is "." then we directly bind the property. So, don't process or validate.
+                if (e.NewValue != null && !(e.NewValue is Enum) && BindingSource != ".") {
+
                     //If newvalue is an object.
                     Type targetType = e.NewValue.GetType();
-                    PropertyInfo tarProp = targetType.GetProperty(BindingPropertyName);
+                    PropertyInfo tarProp = targetType.GetProperty(BindingSource);
                     propValue = tarProp?.GetValue(e.NewValue);
                      if (typeof(INotifyPropertyChanged).IsAssignableFrom(targetType)) {
                         //Subscribe to this property change also
@@ -193,11 +195,11 @@ namespace Haley.Utils
 
         private void ObjectPropertyChanged(object sender, PropertyChangedEventArgs e) {
             //now check and compare the property.
-            if (e.PropertyName != BindingPropertyName) return; //ignore don't try to change the image.
+            if (e.PropertyName != BindingSource) return; //ignore don't try to change the image.
                                                                //Get proeprty from sender
             object propValue = null;
             try {
-                propValue = sender.GetType()?.GetProperty(BindingPropertyName)?.GetValue(sender);
+                propValue = sender.GetType()?.GetProperty(BindingSource)?.GetValue(sender);
                
             } catch (Exception) {
 
@@ -205,16 +207,7 @@ namespace Haley.Utils
             _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
 
-        bool GetTargetElement(IServiceProvider serviceProvider,out DependencyElement target) {
-                target = null;
-            try {
-                var targetProvider = (IProvideValueTarget)serviceProvider.GetService(typeof(IProvideValueTarget));
-                target = new DependencyElement() { TargetObject = targetProvider.TargetObject as FrameworkElement, TargetProperty = targetProvider.TargetProperty as DependencyProperty };
-                return true;
-            } catch (Exception) {
-                return false;
-            }
-        }
+        
 
         Binding CreateBinding() {
 
