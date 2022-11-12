@@ -15,10 +15,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using System.Windows.Markup;
-using Models.IconsPack.Haley;
+using Haley.IconsPack.Models;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using Abstractions.IconsPack.Haley;
+using Haley.IconsPack.Abstractions;
+using Haley.IconsPack.Utils;
 
 namespace Haley.Utils
 {
@@ -173,10 +174,11 @@ namespace Haley.Utils
                 //Since we are dealing with DataContextChange, we will always get DataContext Property
                 //If Binding Source is "." then we directly bind the property. So, don't process or validate.
                 if (e.NewValue != null && !(e.NewValue is string || e.NewValue is Enum) && BindingSource != ".") {
-                    propValue = InternalUtilsCommon.FetchValueAndMonitor(e.NewValue, BindingSource, ObjectPropertyChanged);
+                    InternalUtilsCommon.FetchValueAndMonitor(e.NewValue, BindingSource, ObjectPropertyChanged,_sourceProvider);
+                } else {
+                    _sourceProvider.OnDataChanged(propValue); //this will be the new data.
                 }
             } catch (Exception) { }
-            _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
 
         private void ObjectPropertyChanged(object sender, PropertyChangedEventArgs e) {

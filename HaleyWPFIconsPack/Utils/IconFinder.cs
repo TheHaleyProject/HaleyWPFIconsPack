@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Haley.Enums;
 using System.Windows.Media;
 using Haley.Utils;
-using Models.IconsPack.Haley;
+using Haley.IconsPack.Models;
 
-namespace Haley.Utils {
+namespace Haley.IconsPack.Utils {
     public static class IconFinder {
         static bool _initialized = false;
         const string PACK_PATH = "pack://application:,,,/Haley.WPF.IconsPack;component/Dictionaries/Icons/";
@@ -34,8 +34,38 @@ namespace Haley.Utils {
 
         public static ImageSource GetIcon(string resource_key) {
             EnsureInitialized();
+            ImgSourceKey source_key = ImgSourceKey.BrandKind;
+            var res_key = BrandKind.brand_haley_circle.ToString();
+
+            do {
+                //Check brand kind
+                if (Enum.TryParse<BrandKind>(resource_key, true, out var _bkind)) {
+                    res_key = _bkind.ToString();
+                    source_key = ImgSourceKey.BrandKind;
+                    break;
+                }
+
+                //Check bootstrap
+                if (Enum.TryParse<BootStrapKind>(resource_key, true, out var _bskind)) {
+                    res_key = _bskind.ToString();
+                    source_key = ImgSourceKey.BootStrapKind;
+                    break;
+                }
+
+                //Check FontAwesome
+                if (Enum.TryParse<FAKind>(resource_key, true, out var _fakind)) {
+                    res_key = _fakind.ToString();
+                    if (res_key.ToLower().EndsWith("light")) {
+                        source_key = ImgSourceKey.FAKind_Light;
+                    } else {
+                        source_key = ImgSourceKey.FAKind_Solid;
+                    }
+                    break;
+                }
+            } while (false);
+
             //Get from any
-            return ResourceFetcher.GetResourceAny(resource_key) as ImageSource;
+            return GetIcon(res_key, source_key);
         }
 
         public static ImageSource GetDefaultIcon() {
@@ -45,5 +75,7 @@ namespace Haley.Utils {
         public static List<Uri> GetAllSourcePaths() {
             return ResourceFetcher.GetAllSourcePaths();
         }
+
+
     }
 }

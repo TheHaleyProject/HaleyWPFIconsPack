@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF.IconsPack</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>1.0.5</Version>
+		<Version>1.0.7</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>WPF Icons Pack</Product>
 		<Company>TheHaleyProject</Company>

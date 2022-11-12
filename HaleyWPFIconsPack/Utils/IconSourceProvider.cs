@@ -8,18 +8,18 @@ using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Haley.Enums;
 using Haley.Models;
-using Abstractions.IconsPack.Haley;
+using Haley.IconsPack.Abstractions;
+using Haley.IconsPack.Utils;
 
 namespace Haley.Utils {
     internal class IconSourceProvider : ObservableObject, IIconSourceProvider {
 
-        Enum resource_key;
-        ImgSourceKey source_key;
+        string resource_key;
 
         public ImageSource IconSource {
             get {
                 //Based on the enum value, we try to fetch the data.
-                return IconFinder.GetIcon(resource_key.ToString(), source_key);
+                return IconFinder.GetIcon(resource_key);
             }
         }
 
@@ -28,56 +28,18 @@ namespace Haley.Utils {
             object data = input; //incoming string
 
             if (data is string dstr) {
-                //Try to change the string to enum
-                do {
-                    //Check brand kind
-                    if (Enum.TryParse<BrandKind>(dstr, true, out var _bkind)) {
-                        data = _bkind;
-                        break;
-                    }
-
-                    //Check bootstrap
-                    if (Enum.TryParse<BootStrapKind>(dstr, true, out var _bskind)) {
-                        data = _bskind;
-                        break;
-                    }
-
-                    //Check FontAwesome
-
-                    if (Enum.TryParse<FAKind>(dstr, true, out var _fakind)) {
-                        data = _fakind;
-                        break;
-                    }
-                } while (false);
-            }
-
-            if (!(data is Enum @enum)) {
-                SetDefault();
+                resource_key = dstr;  
+            } else if (data is Enum @enum) {
+                resource_key = @enum.ToString();
             } else {
-                resource_key = @enum;
-                if (@enum is BrandKind) {
-                    source_key = ImgSourceKey.BrandKind;
-                } else if (@enum is FAKind) {
-                    
-                    if (@enum.ToString().ToLower().EndsWith("light")) {
-                        source_key = ImgSourceKey.FAKind_Light;
-                    } else {
-                        source_key = ImgSourceKey.FAKind_Solid;
-                    }
-                } else if (@enum is BootStrapKind) {
-                    source_key = ImgSourceKey.BootStrapKind;
-                } else {
-                    //If enum itself is not our kind, we just reset the resource_key as well
-                    SetDefault();
-                }
+                resource_key = BrandKind.brand_haley_circle.ToString();
             }
 
             OnPropertyChanged(nameof(IconSource));
         }
 
         void SetDefault() {
-            resource_key = BrandKind.brand_haley_circle;
-            source_key = ImgSourceKey.BrandKind;
+            resource_key = BrandKind.brand_haley_circle.ToString();
         }
 
         public IconSourceProvider() { SetDefault(); }
