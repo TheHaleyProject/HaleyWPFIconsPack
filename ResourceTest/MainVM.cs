@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Haley.Enums;
+using Haley.Models;
 
 namespace ResourceTest
 {
-    public class MainVM : ObservableObject
+    public class MainVM : ChangeNotifier
     {
 		Random _random = new Random();
 		Array _values = Enum.GetValues(typeof(BrandKind));
@@ -22,7 +21,7 @@ namespace ResourceTest
 			}
 		}
 
-		public RelayCommand CMDChangeRandomImage => new RelayCommand(ChangeRandomImage);
+		public DelegateCommandBase CMDChangeRandomImage => new DelegateCommandBase(ChangeRandomImage);
 
 		private void ChangeRandomImage() {
 			//Pick a random image.

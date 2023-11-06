@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Haley.Enums;
 using Haley.Models;
 using Haley.IconsPack.Abstractions;
 using Haley.IconsPack.Utils;
 
 namespace Haley.Utils {
-    internal class IconSourceProvider : ObservableObject, IIconSourceProvider {
+    internal class IconSourceProvider : ChangeNotifier, IIconSourceProvider {
 
         string resource_key;
 
