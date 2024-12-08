@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF.IconsPack</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>1.0.8</Version>
+		<Version>1.0.9</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>WPF Icons Pack</Product>
 		<Company>TheHaleyProject</Company>
@@ -101,7 +101,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.Abstractions" Version="1.1.3.2" />
+    <PackageReference Include="Haley.Abstractions" Version="1.1.4" />
   </ItemGroup>
 
   <Import Project="..\..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems" Label="Shared" />
